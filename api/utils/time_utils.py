@@ -1,5 +1,6 @@
 import time
 
+
 def current_milli_time() -> int:
     """
     Returns the current time in milliseconds since the Epoch.

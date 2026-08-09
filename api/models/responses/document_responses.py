@@ -1,6 +1,7 @@
-from pydantic import BaseModel, ConfigDict
 from datetime import datetime
-from typing import Optional
+
+from pydantic import BaseModel, ConfigDict
+
 
 class DocumentResponse(BaseModel):
     id: int
@@ -8,7 +9,7 @@ class DocumentResponse(BaseModel):
     owner_id: int
     organization_id: int
     is_revoked: bool
-    blockchain_tx_id: Optional[str] = None
+    blockchain_tx_id: str | None = None
     created_at: datetime
     
     model_config = ConfigDict(from_attributes=True)

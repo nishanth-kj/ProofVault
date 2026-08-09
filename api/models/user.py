@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, Boolean, BigInteger, ForeignKey
-from sqlalchemy.orm import declarative_base
 from api.constants.status import Status
 from api.utils.time_utils import current_milli_time
+from sqlalchemy import BigInteger, Column, ForeignKey, Integer, String
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 

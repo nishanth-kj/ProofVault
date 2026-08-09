@@ -1,8 +1,9 @@
-from fastapi import FastAPI, Request
-from starlette.middleware.base import BaseHTTPMiddleware
 import time
+
 from api.routes import documents
 from api.utils.logger import logger
+from fastapi import FastAPI, Request
+from starlette.middleware.base import BaseHTTPMiddleware
 
 app = FastAPI(
     title="ProofVault API",

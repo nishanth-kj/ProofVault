@@ -1,7 +1,8 @@
 from typing import Any
 
-from api.models.document import Document
 from sqlalchemy.orm import Session
+
+from models.document import Document
 
 
 class DocumentRepository:

@@ -1,7 +1,8 @@
-from api.constants.status import Status
-from api.utils.time_utils import current_milli_time
 from sqlalchemy import BigInteger, Column, Integer, String
 from sqlalchemy.orm import declarative_base
+
+from constants.status import Status
+from utils.time_utils import current_milli_time
 
 Base = declarative_base()
 

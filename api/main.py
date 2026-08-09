@@ -1,9 +1,10 @@
 import time
 
-from api.routes import documents
-from api.utils.logger import logger
 from fastapi import FastAPI, Request
 from starlette.middleware.base import BaseHTTPMiddleware
+
+from routes import documents
+from utils.logger import logger
 
 app = FastAPI(
     title="ProofVault API",
@@ -36,4 +37,4 @@ def read_root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("api.main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

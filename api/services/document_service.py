@@ -1,8 +1,9 @@
-from api.constants.errors import ERROR_DOCUMENT_NOT_FOUND
-from api.models.schemas import Document, DocumentCreate
-from api.repositories.documents import document_repo
-from api.utils.hash import generate_sha256_hash
+from models.schemas import Document, DocumentCreate
 from sqlalchemy.orm import Session
+
+from constants.errors import ERROR_DOCUMENT_NOT_FOUND
+from repositories.documents import document_repo
+from utils.hash import generate_sha256_hash
 
 
 class DocumentService:

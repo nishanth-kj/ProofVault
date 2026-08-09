@@ -1,0 +1,38 @@
+name: Auto Reply
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Welcome New Issue
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "👋 Thank you for opening this issue! Our team will look into it as soon as possible. If you haven't already, please make sure you have provided all the necessary details and context."
+            })
+
+      - name: Welcome New PR
+        if: github.event_name == 'pull_request_target'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "🚀 Thanks for your contribution! A maintainer will review your Pull Request shortly. Please ensure all checks pass and that your code follows our style guidelines."
+            })

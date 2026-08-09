@@ -1,0 +1,56 @@
+name: Unassign Inactive Issues
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour to check
+
+jobs:
+  unassign:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Unassign inactive contributors
+        uses: actions/github-script@v6
+        with:
+          script: |
+            // Calculate the time exactly 12 hours ago
+            const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000);
+            
+            // Fetch all open issues that currently have someone assigned to them
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              assignee: '*'
+            });
+
+            for (const issue of issues) {
+              // Skip pull requests (they are treated as issues in the API)
+              if (issue.pull_request) continue; 
+              
+              const updatedAt = new Date(issue.updated_at);
+              
+              // If the issue hasn't seen any activity (comments, label changes, etc.) in 12 hours
+              if (updatedAt < twelveHoursAgo) {
+                const assignees = issue.assignees.map(a => a.login);
+                
+                // 1. Leave a polite comment letting them know
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  body: "🕒 This issue has been automatically unassigned because there has been no activity for 12 hours. Feel free to claim it again when you are ready to work on it!"
+                });
+                
+                // 2. Remove the assignees
+                await github.rest.issues.removeAssignees({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  assignees: assignees
+                });
+                
+                console.log(`Unassigned issue #${issue.number}`);
+              }
+            }

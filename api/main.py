@@ -1,9 +1,9 @@
 import time
 
-from routes import documents
-from utils.logger import logger
 from fastapi import FastAPI, Request
+from routes import documents
 from starlette.middleware.base import BaseHTTPMiddleware
+from utils.logger import logger
 
 app = FastAPI(
     title="ProofVault API",

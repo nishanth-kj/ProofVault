@@ -11,3 +11,9 @@ updates:
     directory: "/api"
     schedule:
       interval: "weekly"
+
+  # Maintain dependencies for frontend (npm)
+  - package-ecosystem: "npm"
+    directory: "/web"
+    schedule:
+      interval: "weekly"

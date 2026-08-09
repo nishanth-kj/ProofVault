@@ -1,6 +1,6 @@
 from typing import Any
 
-from api.models.user import User
+from models.user import User
 from sqlalchemy.orm import Session
 
 

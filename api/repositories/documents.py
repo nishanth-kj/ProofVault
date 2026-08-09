@@ -1,6 +1,6 @@
 from typing import Any
 
-from api.models.document import Document
+from models.document import Document
 from sqlalchemy.orm import Session
 
 

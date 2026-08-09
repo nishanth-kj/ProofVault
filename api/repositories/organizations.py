@@ -1,6 +1,6 @@
 from typing import Any
 
-from api.models.organization import Organization
+from models.organization import Organization
 from sqlalchemy.orm import Session
 
 

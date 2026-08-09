@@ -11,7 +11,7 @@ jobs:
       issues: write
     steps:
       - name: Unassign inactive contributors
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           script: |
             // Calculate the time exactly 12 hours ago

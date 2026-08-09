@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Welcome New Issue
         if: github.event_name == 'issues'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           script: |
             github.rest.issues.createComment({
@@ -27,7 +27,7 @@ jobs:
 
       - name: Welcome New PR
         if: github.event_name == 'pull_request_target'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v9
         with:
           script: |
             github.rest.issues.createComment({

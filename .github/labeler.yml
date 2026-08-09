@@ -1,0 +1,20 @@
+backend:
+  - any:
+    - 'api/**/*'
+
+smart-contract:
+  - any:
+    - 'web3/**/*'
+
+frontend:
+  - any:
+    - 'web/**/*'
+
+documentation:
+  - any:
+    - 'docs/**/*'
+    - 'README.md'
+
+github-actions:
+  - any:
+    - '.github/**/*'

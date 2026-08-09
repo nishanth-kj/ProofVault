@@ -1,7 +1,8 @@
 from typing import Any
 
-from models.user import User
 from sqlalchemy.orm import Session
+
+from models.user import User
 
 
 class UserRepository:

@@ -1,7 +1,8 @@
 from typing import Any
 
-from models.organization import Organization
 from sqlalchemy.orm import Session
+
+from models.organization import Organization
 
 
 class OrganizationRepository:
